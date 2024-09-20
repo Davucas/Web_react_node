@@ -1,6 +1,5 @@
 // JoinUsForm.js
 import React, { useState } from 'react';
-import axios from 'axios';
 import './JoinUsForm.css';
 
 const JoinUsForm = () => {
@@ -38,7 +37,7 @@ const JoinUsForm = () => {
     setError(null);
 
     const datosFormulario = {name, last_name, email};
-    
+
     try {
       // const response = await fetch('http://localhost:5000/api/submitForm', {
       //const response = await fetch(`${process.env.REACT_APP_API_URL}/api/submitForm`, {
