@@ -21,6 +21,8 @@ app.use(cors(corsOptions));
 app.post('/api/submitForm', async (req, res) => {
   const { name, last_name, email } = req.body;
 
+  console.log('Data received');
+
   const filePath = path.join(__dirname, 'data.xlsx');
 
   let workbook;
