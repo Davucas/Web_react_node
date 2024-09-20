@@ -1,5 +1,6 @@
 // JoinUsForm.js
 import React, { useState } from 'react';
+import axios from 'axios';
 import './JoinUsForm.css';
 
 const JoinUsForm = () => {
@@ -39,21 +40,19 @@ const JoinUsForm = () => {
     const datosFormulario = {name, last_name, email};
 
     try {
-      // const response = await fetch('http://localhost:5000/api/formulario', {
-      const response = await fetch('/api/submitForm', {
-        method: 'POST',
+      // Make the POST request using axios
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/submitForm`, datosFormulario, {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(datosFormulario),
       });
 
-      if (!response.ok) {
+      // Check if the response is not successful
+      if (response.status !== 200) {
         throw new Error('Error en la solicitud al servidor');
       }
 
-      const result = await response.json();
-      console.log('Respuesta del servidor: ', result);
+      console.log('Respuesta del servidor: ', response.data);
 
       setSuccessMessage('Form submitted!');
       setName('');
@@ -62,7 +61,7 @@ const JoinUsForm = () => {
     } catch (error) {
       console.error('Error al enviar el formulario:', error);
       setError('Hubo un problema al enviar el formulario. Inténtalo de nuevo.');
-    } finally{
+    } finally {
       setLoading(false);
     }
   };
