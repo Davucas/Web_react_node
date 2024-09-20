@@ -39,10 +39,10 @@ const JoinUsForm = () => {
     const datosFormulario = {name, last_name, email};
 
     try {
-      // const response = await fetch('http://localhost:5000/api/submitForm', {
+      const response = await fetch('http://localhost:5000/api/submitForm', {
       //const response = await fetch(`${process.env.REACT_APP_API_URL}/api/submitForm`, {
 
-      const response = await fetch('https://webreactnode-production.up.railway.app/api/submitForm', {
+      //const response = await fetch('https://webreactnode-production.up.railway.app/api/submitForm', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

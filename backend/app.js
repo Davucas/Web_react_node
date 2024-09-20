@@ -6,11 +6,24 @@ const fs = require('fs');
 const cors = require('cors');
 const app = express();
 
+
+const allowedOrigins = ['http://localhost:5173', 'https://tu-dominio-netlify.netlify.app'];
 const corsOptions = {
-  origin: 'https://webreactnode-production.up.railway.app',
-  methods: ['GET', 'POST'],
-  allowedHeaders: ['Content-Type'],
+  origin: (origin, callback) => {
+    if (allowedOrigins.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('No permitido por CORS'));
+    }
+  },
 };
+
+
+// const corsOptions = {
+//   origin: 'https://webreactnode-production.up.railway.app',
+//   methods: ['GET', 'POST'],
+//   allowedHeaders: ['Content-Type'],
+// };
 
 const port = 5000;
 app.use(bodyParser.json());
