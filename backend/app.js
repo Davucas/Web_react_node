@@ -4,13 +4,19 @@ const ExcelJS = require('exceljs');
 const path = require('path');
 const fs = require('fs');
 const cors = require('cors');
-
 const app = express();
 
-const port = process.env.PORT;
+const corsOptions = {
+  origin: 'https://webreactnode-production.up.railway.app',
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type'],
+};
 
+const port = 5000;
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors(corsOptions));
+
+
 
 app.post('/api/submitForm', async (req, res) => {
   const { name, last_name, email } = req.body;
@@ -47,6 +53,7 @@ app.post('/api/submitForm', async (req, res) => {
   // Send a success response
   res.json({ message: 'Form data saved to Excel file successfully!' });
 });
+
 
 // Start the server
 app.listen(port, () => {

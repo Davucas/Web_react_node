@@ -38,22 +38,23 @@ const JoinUsForm = () => {
     setError(null);
 
     const datosFormulario = {name, last_name, email};
-
+    
     try {
-      // Make the POST request using axios
-      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/submitForm`, datosFormulario, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+      // const response = await fetch('http://localhost:5000/api/submitForm', {
+      //const response = await fetch(`${process.env.REACT_APP_API_URL}/api/submitForm`, {
 
-      // Check if the response is not successful
-      if (response.status !== 200) {
+      const response = await fetch('https://webreactnode-production.up.railway.app/api/submitForm', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(datosFormulario),
+      });
+      if (!response.ok) {
         throw new Error('Error en la solicitud al servidor');
       }
-
-      console.log('Respuesta del servidor: ', response.data);
-
+      const result = await response.json();
+      console.log('Respuesta del servidor: ', result);
       setSuccessMessage('Form submitted!');
       setName('');
       setLastName('');
@@ -61,7 +62,7 @@ const JoinUsForm = () => {
     } catch (error) {
       console.error('Error al enviar el formulario:', error);
       setError('Hubo un problema al enviar el formulario. Inténtalo de nuevo.');
-    } finally {
+    } finally{
       setLoading(false);
     }
   };
