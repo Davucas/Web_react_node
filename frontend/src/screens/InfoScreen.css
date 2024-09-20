@@ -1,0 +1,33 @@
+.info-screen {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    background-color: #4472c4;
+    color: white;
+  }
+  
+  .financial-hub, .competitive-advantages {
+    width: 45%;
+    padding-left: 200px;
+  }
+  
+  .info-screen h2 {
+    color: #ffffff;
+    font-size: 2.4em;
+    font-weight: normal;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  ul li {
+    margin-bottom: 10px;
+    font-size: 1.4em;
+  }
+
+  ul li:hover {
+    color: gold;
+  }
+  

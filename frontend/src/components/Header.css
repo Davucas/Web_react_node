@@ -1,0 +1,114 @@
+/* Header.css */
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30px;
+  background-color: #4472c4;
+  border-bottom: 2px solid #2f528f;
+}
+
+.logo {
+  cursor: pointer;
+  user-select: none;
+  font-size: 24px;
+  color: #fcfdfe;
+  font-weight: bold;
+}
+
+.header__nav {
+  display: flex;
+  gap: 60px;
+ 
+}
+
+.nav-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: flex-end;
+  padding-bottom: 5px;
+}
+
+.nav-menu {
+  font-size: 20px;
+  color: white;
+  margin: 0; /* Removes default margin from <p> */
+  padding: 0; /* Removes default padding from <p> */
+}
+
+.nav-button {
+  font-size: 20px;
+  color: white;
+  margin: 0; /* Removes default margin from <p> */
+  padding: 0; /* Removes default padding from <p> */
+}
+
+.nav-menu::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px; /* Position the underline just below the text */
+  width: 225px;
+  height: 3px;
+  background: gold;
+  transform: scaleX(0); /* Initially hidden */
+  transition: transform 0.1s ease-in-out; /* Smooth transition */
+  transform-origin: bottom right; /* Start animation from the right */
+
+}
+
+.nav-menu:hover::after,
+.nav-item:hover .nav-menu::after {
+  transform: scaleX(1); /* Scale to full width on hover */
+  transform-origin: bottom left; /* Animate from left to right */
+}
+
+
+.join-us-button {
+  background-color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  border: none;
+  padding: 8px 16px; /* Padding for button-like appearance */
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth transition for background color change */
+  align-self: center;
+}
+
+
+/* Submenu styling */
+.submenu {
+  display: none; /* Hidden by default */
+  position: absolute; /* Position relative to the parent nav-item */
+  background-color: #4472c4; /* Background color for submenu */
+  padding: 10px; /* Padding inside submenu */
+  border-radius: 4px; /* Rounded corners for submenu */
+  top: 110%; /* Position submenu directly below the nav link */
+  left: 0; /* Align to the left of the parent */
+  z-index: 1000; /* Ensure it appears above other content */
+
+  /* width: 100%; */
+  width: 210px;
+  white-space: no-wrap;
+}
+
+/* Submenu links */
+.menu-item {
+  color: white; /* Submenu text color */
+  text-decoration: none; /* Remove underline */
+  display: block; /* Block display for submenu items */
+  padding: 5px 0; /* Padding for submenu items */
+}
+
+
+.submenu .menu-item:hover {
+  /* background-color: #2f528f;
+  border-radius: 4px; */
+  font-weight: bold;
+}
+
+/* Show submenu on hover */
+.nav-item:hover .submenu {
+  display: block; /* Display submenu on hover */
+}
